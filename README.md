@@ -3,7 +3,6 @@ Eine einfache Kalender-App
 
 <p>Installation:<br>
 npm install --save-dev electron <br>
-npm install electron-forge
 </p>
 
 
