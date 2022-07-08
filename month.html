@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+    <title>Monthly</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <img src="backward.png" style="position:absolute; top: 20px; left: 100px" onclick="month_before()">
+    <img src="forward.png" style="position:absolute; top: 20px; left: 150px" onclick="month_afterward()">
+    <div id="selected_event" style="position: absolute; top: 400px; left: 1000px; width: 200px; height: 400px; overflow-wrap: break-word; color: white;"></div>
+
+    <h2 id="month_and_year" style="text-align: center;">Hallo</h2>
+    <div id="matrix-container" style="display: parent; top: 200px; left: 50px; width:100%; height: 100%;"></div>
+
+    <div id="entry_sidebar" class="sidebar">
+        <div>
+            <a href="javascript:void(0)" class="closebtn" onclick="toogle_sidebar()">&times;</a>
+            <table>
+                <tr>
+                    <td><label>Datum:</label></td>
+                    <td><input type="date" id="entry_date"></input></td>
+                </tr>
+                <tr>
+                    <td><label>Startzeit:</label></td>
+                    <td><input type="time" id="entry_time_start"></input></td>
+                </tr>
+                <tr>
+                    <td><label>Endzeit:</label></td>
+                    <td><input type="time" id="entry_time_end"></input></td>
+                </tr>
+            </table>
+            <br>
+            <label>Tätigkeit:</label> <br>
+            <textarea id="entry_action" rows="5"></textarea>
+            <br> <br>
+            <label>Termin wiederholen?</label> <br>
+            <input type="radio" name="entry_schedule" value="unique" checked><label>einmalig</label><br>
+            <input type="radio" name="entry_schedule" value="weekly"><label>wöchentlich</label><br>
+            <input type="radio" name="entry_schedule" value="monthly"><label>monatlich</label><br>
+            <input type="radio" name="entry_schedule" value="yearly"><label>jährlich</label><br> <br>
+            <label>Farbe: </label>
+            <input type="color" id="entry_color">
+            <br> <br>
+            <button id="btn_entry" onclick="on_new_entry()">Termin eintragen</button>
+        </div>
+    </div>
+    <div id="sidebar-arrow" onclick="toogle_sidebar()">&#8680;</div>
+
+    <div id="navbar">
+        <div class="navbar-item" id="navbar-week" onclick="change_view('week')">Wochenansicht</div>
+        <div class="navbar-item" id="navbar-month" onclick="change_view('month')">Monatsansicht</div>
+    </div>
+    <div id="navbar-arrow" onclick="toogle_navbar()">&#8681;</div>
+
+
+    <script src="library.js"></script>
+    <script src="month_renderer.js"></script>
+</body>
+</html>

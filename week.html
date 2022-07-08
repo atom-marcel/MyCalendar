@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Weekly</title>
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body id="main">
+    <div id="weekday-container">
+        <div id="month-chooser" style="position:absolute; top: 20px; left: 20px"></div>
+        <div id="year-chooser" style="position: absolute; top: 20px; left: 100px"></div>
+        <div id="montag" style="position:absolute; top: 20px; left: 200px;">Montag</div>
+        <div id="dienstag" style="position:absolute; top: 20px; left: 350px;">Dienstag</div>
+        <div id="mittwoch" style="position:absolute; top: 20px; left: 500px;">Mittwoch</div>
+        <div id="donnerstag" style="position:absolute; top: 20px; left: 650px;">Donnerstag</div>
+        <div id="freitag" style="position:absolute; top: 20px; left: 800px;">Freitag</div>
+        <div id="samstag" style="position:absolute; top: 20px; left: 950px;">Samstag</div>
+        <div id="sonntag" style="position:absolute; top: 20px; left: 1100px;">Sonntag</div>
+    </div>
+    <div class="vl" style="position: absolute; top: 20px; left: 180px; bottom: 20px; height: 870px;border-color: #bdbcb9;"></div>
+    <div class="vl" style="position: absolute; top: 20px; left: 330px; bottom: 20px; height: 870px;border-color: #bdbcb9;"></div>
+    <div class="vl" style="position: absolute; top: 20px; left: 480px; bottom: 20px; height: 870px;border-color: #bdbcb9;"></div>
+    <div class="vl" style="position: absolute; top: 20px; left: 630px; bottom: 20px; height: 870px;border-color: #bdbcb9;"></div>
+    <div class="vl" style="position: absolute; top: 20px; left: 780px; bottom: 20px; height: 870px;border-color: #bdbcb9;"></div>
+    <div class="vl" style="position: absolute; top: 20px; left: 930px; bottom: 20px; height: 870px;border-color: #bdbcb9;"></div>
+    <div class="vl" style="position: absolute; top: 20px; left: 1080px; bottom: 20px; height: 870px;border-color: #bdbcb9;"></div>
+    <div class="vl" style="position: absolute; top: 20px; left: 1230px; bottom: 20px; height: 870px;border-color: #bdbcb9;"></div>
+    <script src="library.js"></script>
+    <script src="week_renderer.js"></script>
+    
+
+    <img src="backward.png" style="position:absolute; top: 20px; left: 1250px" onclick="week_before()">
+    <img src="forward.png" style="position:absolute; top: 20px; left: 1300px" onclick="week_afterward()">
+    <div id="selected_event" style="position: absolute; top: 400px; left: 1250px; width: 200px; height: 400px; overflow-wrap: break-word; color: white;"></div>
+
+    <div id="entry_sidebar" class="sidebar">
+        <div>
+            <a href="javascript:void(0)" class="closebtn" onclick="toogle_sidebar()">&times;</a>
+            <table>
+                <tr>
+                    <td><label>Datum:</label></td>
+                    <td><input type="date" id="entry_date"></input></td>
+                </tr>
+                <tr>
+                    <td><label>Startzeit:</label></td>
+                    <td><input type="time" id="entry_time_start"></input></td>
+                </tr>
+                <tr>
+                    <td><label>Endzeit:</label></td>
+                    <td><input type="time" id="entry_time_end"></input></td>
+                </tr>
+            </table>
+            <br>
+            <label>Tätigkeit:</label> <br>
+            <textarea id="entry_action" rows="5"></textarea>
+            <br> <br>
+            <label>Termin wiederholen?</label> <br>
+            <input type="radio" name="entry_schedule" value="unique" checked><label>einmalig</label><br>
+            <input type="radio" name="entry_schedule" value="weekly"><label>wöchentlich</label><br>
+            <input type="radio" name="entry_schedule" value="monthly"><label>monatlich</label><br>
+            <input type="radio" name="entry_schedule" value="yearly"><label>jährlich</label><br> <br>
+            <label>Farbe: </label>
+            <input type="color" id="entry_color">
+            <br> <br>
+            <button id="btn_entry" onclick="on_new_entry()">Termin eintragen</button>
+        </div>
+    </div>
+    <div id="sidebar-arrow" onclick="toogle_sidebar()">&#8680;</div>
+
+    <div id="navbar">
+        <div class="navbar-item" id="navbar-week" onclick="change_view('week')">Wochenansicht</div>
+        <div class="navbar-item" id="navbar-month" onclick="change_view('month')">Monatsansicht</div>
+    </div>
+    <div id="navbar-arrow" onclick="toogle_navbar()">&#8681;</div>
+
+    <div id="events"></div>
+</body>
+</html>
