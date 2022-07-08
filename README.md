@@ -1,12 +1,16 @@
 # MyCalendar
 Eine einfache Kalender-App
 
-Installation:
-npm install --save-dev electron
+<p>Installation:<br>
+npm install --save-dev electron <br>
 npm install electron-forge
+</p>
 
-Start program:
+
+<p>Start program:<br>
 npm start
+</p>
 
-Build program:
+<p>Build program: <br>
 npm run make
+</p>
