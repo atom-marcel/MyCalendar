@@ -6,10 +6,10 @@ npm install --save-dev electron <br>
 </p>
 
 
-<p>Start program:<br>
+<p>Programm starten:<br>
 npm start
 </p>
 
-<p>Build program: <br>
+<p>Programm erstellen: <br>
 npm run make
 </p>
