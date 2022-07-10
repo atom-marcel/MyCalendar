@@ -2,16 +2,16 @@
 var selected_date = new Date()
 selected_date.setDate(1)
 
-var matrix_rows = 6
-var matrix_columns = 7
+const MATRIX_ROWS = 6
+const MATRIX_COLUMNS = 7
 
 function create_container_matrix() {
     let container = document.getElementById("matrix-container")
     let relative_y = 80
-    for(let i = 0; i < matrix_rows; i++) {
+    for(let i = 0; i < MATRIX_ROWS; i++) {
         let relative_x = 20;
-        for(let j = 0; j < matrix_columns; j++) {
-            let tag = `<div class="matrix-item" style="overflow: auto; display: block; position: absolute; top: ${relative_y}px; left: ${relative_x}px; width: 120px; height: 120px; border: solid 1px;" id="matrix-${i}-${j}"></div>`
+        for(let j = 0; j < MATRIX_COLUMNS; j++) {
+            let tag = `<div class="matrix-item" style="top: ${relative_y}px; left: ${relative_x}px;" id="matrix-${i}-${j}"></div>`
             container.innerHTML += tag
             relative_x += 140
         }
@@ -50,8 +50,8 @@ async function define_month_matrix(date) {
     document.getElementById("matrix-container").innerHTML = ""
     create_container_matrix()
 
-    for(let i = 0; i < matrix_rows; i++) {
-        for(let j = 0; j < matrix_columns; j++) {
+    for(let i = 0; i < MATRIX_ROWS; i++) {
+        for(let j = 0; j < MATRIX_COLUMNS; j++) {
             let color = "black"
             if(next.getMonth() != date.getMonth()) {
                 color = "#b3b3b3"
@@ -69,7 +69,7 @@ async function define_month_matrix(date) {
 
             let events = ""
             array.forEach(item => {
-                events += `<div style="background-color: ${item.color}; overflow: hidden; width: auto; margin-top: 5px; color: white; padding: 2px; text-overflow: ellipsis;"
+                events += `<div style="background-color: ${item.color};" class="event-month"
                  onclick="set_selected_event(this.innerHTML, this.style.backgroundColor)">
                     <a href="javascript:void(0)" style="float: right; text-decoration: none; " 
                     onclick="remove_entry('${item.date}', '${item.time_start}', '${item.time_end}', '${item.message}', '${item.color}', '${item.schedule}')">&times;</a>

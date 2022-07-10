@@ -4,6 +4,36 @@
 
 body {
     margin: 0px;
+    font-family: Arial;
+}
+
+.matrix-item {
+    overflow: auto; 
+    display: block; 
+    position: absolute;
+    width: 120px; 
+    height: 120px; 
+    border: solid 1px;
+}
+
+.event-week {
+    position: absolute; 
+    z-index: 1; 
+    padding: 0px;
+    border: 0px solid;
+    color: white;
+    text-overflow: ellipsis;
+    overflow: hidden; 
+    width: 149px;
+}
+
+.event-month {
+    overflow: hidden; 
+    width: auto; 
+    margin-top: 5px; 
+    color: white; 
+    padding: 2px; 
+    text-overflow: ellipsis;
 }
 
 .sidebar {
@@ -61,6 +91,7 @@ body {
     border-bottom-left-radius: 50px 20px;
     border-bottom-right-radius: 50px 20px;
     background-color: black;
+    cursor: pointer;
 }
 
 .navbar-item {
@@ -72,6 +103,11 @@ body {
     width: 150px;
     background-color: white;
     margin: 50px;
+    cursor: pointer;
+}
+
+.navbar-item:hover {
+    background-color: rgba(192,192,192,0.8);
 }
 
 #sidebar-arrow {
@@ -89,14 +125,13 @@ body {
     border-top-right-radius: 50px 20px;
     border-bottom-right-radius: 50px 20px;
     transition: 0.5s;
+    cursor: pointer;
 }
 
 div .closebtn {
-    position: absolute;
-    top: 1px;
-    right: 5px;
-    font-size: 16px;
-    text-decoration: none;  
+    display: absolute; 
+    text-decoration: none; 
+    float: right; 
     z-index: 2;
 }
 

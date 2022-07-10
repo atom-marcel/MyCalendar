@@ -1,8 +1,10 @@
+var selected_date = new Date()
+
 function draw_week_axis() {
     let div_rel_y = 60
     tags = ""
     for(let i = 0; i < 25; i++) {
-        tags += `<div style="position: absolute; top: ${div_rel_y - 17.5}px; left: 80px;z-index: 1; background-color: white; width: 40px; text-align: center">${i}:00</div>`
+        tags += `<div style="position: absolute; top: ${div_rel_y - 17.5}px; left: 80px;z-index: 1; background-color: white; width: 50px; text-align: center">${i}:00</div>`
         tags += `<hr style="position: absolute; top:${div_rel_y - 10}px; left: 20px; width: 1209px; margin: 0px; border: solid 1px; border-color: #bdbcb9;"></hr>`
         //tags += `<hr style="position: absolute; top:${div_rel_y - 10 + 17.5}px; left: 20px; right: 20px; margin: 0px"></hr>`
         div_rel_y += 35
@@ -41,20 +43,13 @@ function add_time_event(date_start, date_end, message, week_day, color, schedule
     main = document.getElementById("events")
     const complete_message = `${date_start.getHours().toString().padStart(2, "0")}:${date_start.getMinutes().toString().padStart(2, "0")} - ${date_end.getHours().toString().padStart(2, "0")}:${date_end.getMinutes().toString().padStart(2, "0")}: ${message}`
 
-    tag = `<div class="event" onclick="set_selected_event(this.innerHTML, this.style.backgroundColor)" style="position: absolute; 
+    tag = `<div class="event-week" onclick="set_selected_event(this.innerHTML, this.style.backgroundColor)" style="
             top: ${50 + (date_start.getHours() + date_start.getMinutes() / 60) * 35}px;
             left: ${181 + week_day * 150}px;
-            text-overflow: ellipsis;
-            overflow: hidden; 
-            width: 149px;
             height: ${35 * hours}px; 
             background-color: ${color}; 
-            z-index: 1; 
-            padding: 0px;
-            border: 0px solid;
-            color: white;"
             title="${complete_message}">
-                <a href="javascript:void(0)" style="display: absolute; text-decoration: none; float: right; z-index: 2;" onclick="remove_entry('${date_start.toJSON()}', '${date_end.toJSON()}', '${message}', '${color}', '${schedule}')">&times;</a>
+                <a href="javascript:void(0)" class="closebtn" onclick="remove_entry('${date_start.toJSON()}', '${date_end.toJSON()}', '${message}', '${color}', '${schedule}')">&times;</a>
                 ${complete_message}
             </div>`
     
@@ -86,7 +81,7 @@ function initialize_entries(entry_array, weekday) {
 function define_current_weekdays(current_date) {
     const date_montag = get_monday_at_current_week(current_date)
 
-    const events = Array.from(document.getElementsByClassName("event"))
+    const events = Array.from(document.getElementsByClassName("event-week"))
     events.forEach(event => {
         event.remove()
     })
@@ -134,7 +129,6 @@ window.electronAPI.handle_menu_sidebar((event) => {
     toogle_sidebar()
 })
 
-var selected_date = new Date()
 draw_week_axis()
 define_current_weekdays(selected_date)
 
