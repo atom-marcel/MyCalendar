@@ -1,5 +1,5 @@
 # MyCalendar
-A simple Calendar app based on the electron framework
+Ein simpler Kalender der mit dem electron Framework programmiert wurde.
 
 <p>Installation:<br>
 npm install --save-dev electron <br>
